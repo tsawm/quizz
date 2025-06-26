@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Trainer</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; }
+    .question { font-weight: bold; margin-top: 2em; }
+    .option { margin: 0.5em 0; }
+    .correct { color: green; }
+    .incorrect { color: red; }
+  </style>
+</head>
+<body>
+
+  <div id="quiz-container">
+    <div id="question" class="question"></div>
+    <div id="options"></div>
+    <button id="next-button" style="display:none;">Next</button>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is the purpose of the Daily Scrum?",
+        options: [
+          "To update the Product Backlog",
+          "To share progress and plan the next 24 hours",
+          "To report to the Scrum Master",
+          "To assign tasks to team members"
+        ],
+        correct: 1
+      },
+      {
+        question: "Who is responsible for the Product Backlog?",
+        options: [
+          "Scrum Master",
+          "Developers",
+          "Product Owner",
+          "Project Manager"
+        ],
+        correct: 2
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('next-button');
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = '';
+
+      q.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.className = 'option';
+        btn.onclick = () => selectOption(index);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectOption(index) {
+      const q = quizData[currentQuestion];
+      const buttons = document.querySelectorAll('.option');
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === q.correct) btn.classList.add('correct');
+        else if (i === index) btn.classList.add('incorrect');
+      });
+      nextBtn.style.display = 'inline';
+    }
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+        nextBtn.style.display = 'none';
+      } else {
+        questionEl.textContent = "You've completed the quiz!";
+        optionsEl.innerHTML = '';
+        nextBtn.style.display = 'none';
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
