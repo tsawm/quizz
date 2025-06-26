@@ -1,13 +1,22 @@
-import { useState } from 'react';
-import { questions } from './questions';
+import { useState, useEffect } from 'react';
+import questionsData from './questions.json';
 import './App.css';
 
 function App() {
+  const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const question = questions[current];
+  useEffect(() => {
+    // Set questions from the imported JSON
+    setQuestions(questionsData);
+    setLoading(false);
+  }, []);
+
+  // Only proceed if questions are loaded and the current index is valid
+  const question = questions.length > 0 && current < questions.length ? questions[current] : null;
 
   const handleOptionClick = (index) => {
     if (showAnswer) return;
@@ -20,6 +29,10 @@ function App() {
     setShowAnswer(false);
     setCurrent((prev) => prev + 1);
   };
+
+  if (loading) {
+    return <div className="container"><p>Loading questions...</p></div>;
+  }
 
   return (
     <div className="container">
