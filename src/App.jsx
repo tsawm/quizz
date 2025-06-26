@@ -63,7 +63,12 @@ function App() {
             <>
               <div className="explanation">
                 <h3>{selected === question.correctIndex ? "Correct!" : "Incorrect!"}</h3>
-                <p>{question.explanation}</p>
+                <div className="explanation-section">
+                  <p>{question.explanation}</p>
+                </div>
+                <div className="explanation-section">
+                  <p>{question.incorrect}</p>
+                </div>
               </div>
               <button className="next-btn" onClick={handleNext}>
                 Next

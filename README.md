@@ -80,7 +80,8 @@ Questions are stored in the `src/questions.json` file. To add or modify question
       "Option 4"
     ],
     "correctIndex": 0,  // Index of the correct option (starting from 0)
-    "explanation": "Detailed explanation of the answer. This text will be shown to the user after they select an option."
+    "explanation": "Detailed explanation of why the correct answer is right. This will be shown to the user after they answer.",
+    "incorrect": "Explanation of why the incorrect answers are wrong. This will also be shown to the user after they answer."
   }
 ]
 ```
@@ -89,7 +90,10 @@ Each question object contains:
 - `question`: The text of the question
 - `options`: An array of possible answers
 - `correctIndex`: The index of the correct answer (starting from 0)
-- `explanation`: A detailed explanation that will be shown after the user selects an answer
+- `explanation`: An explanation of why the correct answer is right
+- `incorrect`: An explanation of why the incorrect answers are wrong
+
+After a user answers a question, the application will display both explanations, providing complete feedback regardless of whether the user answered correctly or not.
 
 ## Project Structure
 

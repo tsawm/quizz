@@ -31,9 +31,25 @@
 .explanation h3 {
   margin-top: 0;
   color: #495057;
+  margin-bottom: 1em;
 }
 
-.explanation p {
+.explanation-section {
+  margin-bottom: 1em;
+}
+
+.explanation-section:last-child {
+  margin-bottom: 0;
+}
+
+.explanation-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: #495057;
+  font-size: 1.1em;
+}
+
+.explanation-section p {
   margin-bottom: 0;
   line-height: 1.5;
   color: #212529;
