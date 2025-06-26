@@ -79,10 +79,17 @@ Questions are stored in the `src/questions.json` file. To add or modify question
       "Option 3",
       "Option 4"
     ],
-    "correctIndex": 0  // Index of the correct option (starting from 0)
+    "correctIndex": 0,  // Index of the correct option (starting from 0)
+    "explanation": "Detailed explanation of the answer. This text will be shown to the user after they select an option."
   }
 ]
 ```
+
+Each question object contains:
+- `question`: The text of the question
+- `options`: An array of possible answers
+- `correctIndex`: The index of the correct answer (starting from 0)
+- `explanation`: A detailed explanation that will be shown after the user selects an answer
 
 ## Project Structure
 
