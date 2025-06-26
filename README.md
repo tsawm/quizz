@@ -63,6 +63,7 @@ npm run deploy
 ```
 
 This command will build the application and publish it to GitHub Pages.
+https://tsawm.github.io/quizz/
 
 ## Customizing Questions
 

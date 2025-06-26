@@ -60,9 +60,15 @@ function App() {
             ))}
           </ul>
           {showAnswer && (
-            <button className="next-btn" onClick={handleNext}>
-              Next
-            </button>
+            <>
+              <div className="explanation">
+                <h3>{selected === question.correctIndex ? "Correct!" : "Incorrect!"}</h3>
+                <p>{question.explanation}</p>
+              </div>
+              <button className="next-btn" onClick={handleNext}>
+                Next
+              </button>
+            </>
           )}
         </>
       ) : (
